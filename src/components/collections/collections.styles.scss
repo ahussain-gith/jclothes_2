@@ -1,0 +1,14 @@
+.collections{
+    display: flex;
+    flex-direction: column;  
+    .collection-title{
+        display: flex;
+        padding: 10px;
+        .title{
+            font-weight: bold;
+        }
+        .more{
+            padding-left: 20px;
+        }
+    }  
+}
