@@ -1,19 +1,22 @@
 import React from "react";
-import COLLECTIONS_DATA from "../../data/collections-data";
-import "./collections.styles.scss";
 
+import "./collections.styles.scss";
+import COLLECTIONS_DATA from '../../data/collections-data'
 import CollectionItems from "./collection-items.component";
 
 class Collections extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      collections: COLLECTIONS_DATA
+      collections: props.collections
     };
   }
 
   render() {
-    const { collections } = this.state;
+    var { collections } = this.state;
+    if(!collections){
+      collections = COLLECTIONS_DATA;
+    }
     return (
       <div>
         {collections.map(collection => (
