@@ -5,7 +5,7 @@ import HomePage from "./pages/homepage/homepage.component";
 import Header from "./components/header/header.component";
 import CollectionItems from "./components/collections/collections.component";
 import Authentication from "./pages/authentication/authentication.component";
-import {  Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import { auth, createUserProfileDocument } from "./firebase/firebase.util";
 
 import { connect } from "react-redux";
@@ -13,7 +13,7 @@ import { setCurrentUser } from "./reduxstore/user/user.actions";
 
 class App extends React.Component {
   unsubscribeFromAuth = null;
-  
+
   componentDidMount() {
     const { setCurrentUser } = this.props;
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
@@ -39,14 +39,23 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/hats" component={CollectionItems} />
-          <Route exact path="/authenticate" component={Authentication} />
+          <Route
+            exact
+            path="/authenticate"
+            render={() =>
+              this.props.currentUser ? <Redirect to="/" /> : <Authentication />
+            }
+          />
         </Switch>
       </div>
     );
   }
 }
+const mapStateToProps = state => ({
+  currentUser: state.user.currentUser
+});
 
 const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user))
 });
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
