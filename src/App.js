@@ -10,6 +10,7 @@ import { auth, createUserProfileDocument } from "./firebase/firebase.util";
 
 import { connect } from "react-redux";
 import { setCurrentUser } from "./reduxstore/user/user.actions";
+import {selectCurrentUser} from './reduxstore/user/user.selectors'
 
 class App extends React.Component {
   unsubscribeFromAuth = null;
@@ -52,7 +53,7 @@ class App extends React.Component {
   }
 }
 const mapStateToProps = state => ({
-  currentUser: state.user.currentUser
+  currentUser: selectCurrentUser(state)
 });
 
 const mapDispatchToProps = dispatch => ({
