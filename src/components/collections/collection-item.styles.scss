@@ -1,51 +1,53 @@
 .collection-item {
+  width: 22%;
   display: flex;
   flex-direction: column;
-  border: 1 solid black;
-  width: 100%;
-  height: 200px;
-  margin: 5px 5px;
-  padding: 5px 5px;
-  overflow: hidden;
-  
+  height: 350px;
+  align-items: center;
+  position: relative;
+
+  .image {
+    width: 100%;
+    height: 75%;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 5px;
+  }
+
+  .custom-button {
+    width: 80%;
+    opacity: 0.7;
+    position: absolute;
+    top: 200px;
+    display: none;
+  }
 
   &:hover {
-    cursor: pointer;
-    & .background-image {
-      transform: scale(1.3);
-      transition: transform 6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    .image {
+      opacity: 0.8;
     }
-    &.shopItem{
-        background-color: white;
-    }
-  }
- 
-}
-.shopItem{
-    width: 30%;
-    height: 30%;
-    display: flex;
-    align-self: center;
-    align-items: center;
-    align-content: center;
-}
-.background-image {
-  width: 100%;
-  height: 100%;
-  background-position: center;
-  background-size: cover;
-}
 
-.footer {
-    display: flex;
-    flex-direction: row;
-    .name {
-      width: 75%;
-      font-size: small;
-    }
-    .price {
-        display: flex;
-      width: 25%;
-      align-self: flex-end;
+    .custom-button {
+      opacity: 0.85;
+      display: flex;
     }
   }
+
+  .collection-footer {
+    width: 100%;
+    height: 5%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+
+    .name {
+      width: 60%;
+      margin-bottom: 15px;
+    }
+
+    .price {
+      width: 35%;      
+      text-align: end;
+    }
+  }
+}
