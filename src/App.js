@@ -3,6 +3,7 @@ import React from "react";
 import "./App.css";
 import HomePage from "./pages/homepage/homepage.component";
 import CartCheckoutPage from "./pages/cart-checkout/cart-checkout.component";
+import ShopPage from "./pages/shop/shop.component";
 
 import Header from "./components/header/header.component";
 import CollectionItems from "./components/collections/collections.component";
@@ -40,8 +41,10 @@ class App extends React.Component {
       <div>
         <Header />
         <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route exact path="/hats" component={CollectionItems} />
+          <Route exact path="/" render={() => <h1>HomePage</h1>} />
+          <Route exact path="/shop" component={HomePage} />
+          <Route exact path="/shop/:collectionId" component={ShopPage} />
+          <Route exact path="/collections" component={CollectionItems} />
           <Route
             exact
             path="/authenticate"
@@ -50,7 +53,6 @@ class App extends React.Component {
             }
           />
           <Route exact path="/checkout" component={CartCheckoutPage} />
-          
         </Switch>
       </div>
     );

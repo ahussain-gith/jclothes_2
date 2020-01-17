@@ -1,0 +1,15 @@
+.shop-page {
+  display: flex;
+  flex-direction: column;
+  .title {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+  .items {
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    justify-content: space-between; 
+  }
+}

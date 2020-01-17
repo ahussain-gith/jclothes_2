@@ -19,7 +19,7 @@ const Header = ({ currentUser, hidden }) => (
     </div>
     <div className="options">
       <div className="option">
-        <Link to="/hats">Shop</Link>
+        <Link to="/shop">Shop</Link>
       </div>
       <div className="option">Contact</div>
       {currentUser ? (
