@@ -8,10 +8,9 @@ import {
 } from "../../reduxstore/cart/cart.selectors";
 
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
-
 import "./cart-checkout.styles.scss";
 
-const CartCheckoutPage = ({ cartItems, totalPrice }) => (
+const CartCheckoutPage = ({ cartItems, totalPrice, dispatch }) => (
   <div className="checkout-page">
     <div className="checkout-header">
       <div className="header-block">
