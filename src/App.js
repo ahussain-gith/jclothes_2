@@ -2,6 +2,8 @@ import React from "react";
 
 import "./App.css";
 import HomePage from "./pages/homepage/homepage.component";
+import CartCheckoutPage from "./pages/cart-checkout/cart-checkout.component";
+
 import Header from "./components/header/header.component";
 import CollectionItems from "./components/collections/collections.component";
 import Authentication from "./pages/authentication/authentication.component";
@@ -10,7 +12,7 @@ import { auth, createUserProfileDocument } from "./firebase/firebase.util";
 
 import { connect } from "react-redux";
 import { setCurrentUser } from "./reduxstore/user/user.actions";
-import {selectCurrentUser} from './reduxstore/user/user.selectors'
+import { selectCurrentUser } from "./reduxstore/user/user.selectors";
 
 class App extends React.Component {
   unsubscribeFromAuth = null;
@@ -47,6 +49,8 @@ class App extends React.Component {
               this.props.currentUser ? <Redirect to="/" /> : <Authentication />
             }
           />
+          <Route exact path="/checkout" component={CartCheckoutPage} />
+          
         </Switch>
       </div>
     );
